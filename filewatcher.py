@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	eventHandler.commands = sys.argv[1:]
 
 	observer = Observer()
-	observer.schedule(eventHandler, path=args[0] if args else '.')
+	observer.schedule(eventHandler, path=args[0] if sys.argv[1:] else '.')
 	observer.start()
 	
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
