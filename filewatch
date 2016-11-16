@@ -16,6 +16,7 @@ parser.add_argument('-w', metavar='watchdir', default='.', type=str, help='Direc
 args = parser.parse_args()
 
 class EventHandler(PatternMatchingEventHandler):
+	
 	patterns = ["*"]
 
 	def do_handleChanges(self, event):
@@ -48,12 +49,14 @@ class EventHandler(PatternMatchingEventHandler):
 		
 if __name__ == '__main__':
 	eventHandler = EventHandler()
+	print args
 	
+	print open("{0}/.fwignore".format(args.w), 'r')
 	observer = Observer()
-	observer.schedule(eventHandler, path='.', recursive=True)
+	observer.schedule(eventHandler, path=args.w, recursive=True)
 	observer.start()
 	
-	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
+	print "filewatcher.py is watching on: {0}".format(args.w)
 	
 	try:
 		while True:
