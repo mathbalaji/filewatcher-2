@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
 	eventHandler.logfile = open(logfile, 'w')
 	eventHandler.logfile.write("filewatcher.py is watching on: {0}\n".format(repr(os.getcwd())))
-	eventHandler.logfile = close()
+	eventHandler.logfile = close(logfile)
 	
 	try:
 		while True:
