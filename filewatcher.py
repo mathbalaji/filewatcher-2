@@ -10,19 +10,19 @@ from optparse import OptionParser
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-def getOptions:
+def getOptions():
 	parser = OptionParser()
 	parser.add_option("-f", "--file", dest="filename", help="write report to FILE", metavar="FILE")
 	parser.add_option("-q", "--quiet", action="store_false", dest="verbose", default=True, help="don't print status messages to stdout")
 
-(options, args) = parser.parse_args()
+	return parser.parse_args()
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
 
 	def do_handleChanges(self, event):
 		print "Handle changes"
-
+		print getOptions()
 		commands = sys.argv[1:]
 		for cmd in commands:
 			print "Executing \"{0}\" ...".format(cmd)
