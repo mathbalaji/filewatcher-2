@@ -43,7 +43,6 @@ class EventHandler(PatternMatchingEventHandler):
 	def on_create(self, event):
 		self.process(event)
 
-with daemon
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	logfile = "/var/log/filewatcher.log"
