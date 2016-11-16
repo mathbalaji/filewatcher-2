@@ -13,6 +13,7 @@ class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
 	
 	def do_handleChanges(self, event):
+		print "Handle changes"
 		buildCmd = "swift build"
 		runCmd = ".build/debug/App"
 		
