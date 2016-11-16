@@ -17,9 +17,8 @@ class EventHandler(PatternMatchingEventHandler):
 		buildCmd = "swift build"
 		runCmd = ".build/debug/App"
 		
-		print event.src_path, event.event_type
-		process = subprocess.Popen(buildCmd.split(), stdout=subprocess.PIPE) 
-		output, error = process.communicate()
+		print "Have CMDS: {0}".format(commands)
+		
 		
 		print output, error
 
