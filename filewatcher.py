@@ -10,22 +10,19 @@ from optparse import OptionParser
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-test = "TEST"
+parser = OptionParser()
+parser.add_option('-w', '--watchdir', dest='watchdir', default='.', help="Watching this directory instead of \'.\'")
+parser.add_option('-l', '--log', dest='log', default='stderr', help="Destination for printing logs.")
+opts = parser.parse_args()
 
-def getOptions():
-	parser = OptionParser()
-	parser.add_option('-w', '--watchdir', dest='watchdir', default='.', help="Watching this directory instead of \'.\'")
-	parser.add_option('-l', '--log', dest='log', default='stderr', help="Destination for printing logs.")
-	return parser.parse_args()
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
 
 	def do_handleChanges(self, event):
 		print "Handle changes"
-		print test
 
-		print args
+		print opts
 		commands = sys.argv[1:]
 		for cmd in commands:
 			print "Executing \"{0}\" ...".format(cmd)
@@ -53,7 +50,6 @@ class EventHandler(PatternMatchingEventHandler):
 
 if __name__ == '__main__':
 	args = sys.argv[1:]
-	opt = getOptions()
 	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
 
