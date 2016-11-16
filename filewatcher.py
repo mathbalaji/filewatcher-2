@@ -42,12 +42,13 @@ class EventHandler(PatternMatchingEventHandler):
 		self.process(event)
 
 if __name__ == '__main__':
+	args = sys.argv[1:]
 	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
-	eventHandler.commands = sys.argv[1:]
+	eventHandler.commands = args
 
 	observer = Observer()
-	observer.schedule(eventHandler, path=args[0] if sys.argv[1:] else '.')
+	observer.schedule(eventHandler, path=args[0] if args else '.')
 	observer.start()
 	
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
