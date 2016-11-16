@@ -57,7 +57,7 @@ if __name__ == '__main__':
 	observer.start()
 	
 	print opts.log
-	print >> open(opts.log, 'a'), 'Hello', 'World', 2+3
+	print >> open(opts.log, 'a'), 'Hello', 'World'
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
 	
 	try:
