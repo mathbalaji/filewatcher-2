@@ -10,6 +10,8 @@ from optparse import OptionParser
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
+
+
 parser = OptionParser()
 parser.add_option('-w', '--watchdir', dest='watchdir', default='.', help="Watching this directory instead of \'.\'")
 parser.add_option('-l', '--log', dest='log', help="Destination for printing logs.")
@@ -52,6 +54,9 @@ if __name__ == '__main__':
 	args = sys.argv[1:]
 	eventHandler = EventHandler()
 
+	print "Options: {0}".format(opts)
+	print "Args: {0}".format(args)
+	
 	observer = Observer()
 	observer.schedule(eventHandler, path='.')
 	observer.start()
