@@ -43,7 +43,7 @@ class EventHandler(PatternMatchingEventHandler):
         self.process(event)
 
 
-class Filewatcher(DaemonContext):
+class Filewatcher(Daemon):
     def run(self):
         args = sys.argv[1:]
         
