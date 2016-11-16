@@ -4,7 +4,7 @@ import time
 import sys
 import os
 import subprocess
-from daemon import DaemonContext
+from daemon
 
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
@@ -44,7 +44,7 @@ class EventHandler(PatternMatchingEventHandler):
         self.process(event)
 
 
-class Filewatcher(DaemonContext):
+class Filewatcher(daemon.Daemon):
     def run(self):
         args = sys.argv[1:]
         
