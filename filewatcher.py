@@ -11,7 +11,7 @@ from watchdog.events import PatternMatchingEventHandler
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
-	commands = null
+	commands = []
 	def do_handleChanges(self, event):
 		print "Handle changes"
 		buildCmd = "swift build"
