@@ -50,9 +50,9 @@ if __name__ == '__main__':
 	observer.schedule(eventHandler, path=args[0] if args else '.')
 	observer.start()
 
-	eventHandler.logfile = open(logfile, 'w')
+	eventHandler.logfile.open('./filewatcher.log', 'w')
 	eventHandler.logfile.write("filewatcher.py is watching on: {0}\n".format(repr(os.getcwd())))
-	eventHandler.logfile = close(logfile)
+	eventHandler.logfile.close()
 	
 	try:
 		while True:
