@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	eventHandler = EventHandler()
 	
 	observer = Observer()
-	observer.schedule(eventHandler, path='./*')
+	observer.schedule(eventHandler, path='.', recursive=True)
 	observer.start()
 	
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
