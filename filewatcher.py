@@ -11,7 +11,7 @@ from watchdog.events import PatternMatchingEventHandler
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
-
+	
 	def do_handleChanges(self, event):
 		buildCmd = "swift build"
 		runCmd = ".build/debug/App"
@@ -49,10 +49,6 @@ if __name__ == '__main__':
 	observer = Observer()
 	observer.schedule(eventHandler, path=args[0] if args else '.')
 	observer.start()
-
-	eventHandler.logfile.open('./filewatcher.log', 'w')
-	eventHandler.logfile.write("filewatcher.py is watching on: {0}\n".format(repr(os.getcwd())))
-	eventHandler.logfile.close()
 	
 	try:
 		while True:
