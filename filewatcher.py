@@ -50,13 +50,13 @@ class EventHandler(PatternMatchingEventHandler):
 
 if __name__ == '__main__':
 	args = sys.argv[1:]
-	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
 
 	observer = Observer()
 	observer.schedule(eventHandler, path='.')
 	observer.start()
 	
+	print >> open(opts.log, 'a'), 'Hello', 'World', 2+3
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
 	
 	try:
@@ -64,4 +64,5 @@ if __name__ == '__main__':
 			time.sleep(1)
 	except KeyboardInterrupt:
 		observer.stop()
+		
 	observer.join()
