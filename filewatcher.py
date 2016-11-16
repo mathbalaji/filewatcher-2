@@ -12,7 +12,7 @@ from watchdog.events import PatternMatchingEventHandler
 
 parser = OptionParser()
 parser.add_option('-w', '--watchdir', dest='watchdir', default='.', help="Watching this directory instead of \'.\'")
-parser.add_option('-l', '--log', dest='log', default='stderr', help="Destination for printing logs.")
+parser.add_option('-l', '--log', dest='log', default=sys.stdout, help="Destination for printing logs.")
 opts = parser.parse_args()
 
 
