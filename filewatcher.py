@@ -19,9 +19,10 @@ class EventHandler(PatternMatchingEventHandler):
 		
 		print "Have CMDS: {0}".format(commands)
 		for cmd in commands:
-			print "executing \"{0}\" ...".format(cmd)
-			subprocess.call(cmd, shell=True)
-			print "\"{0}\" done".format(cmd)
+			print "Executing \"{0}\" ...".format(cmd)
+			returnCode = subprocess.call(cmd, shell=True)
+			print "Done \"{0}\"".format(cmd)
+			print "Return: {0}".format(returnCode)
 
 		
 	def process(self, event):
