@@ -5,9 +5,17 @@ import sys
 import os
 import subprocess
 import daemon
+from optparse import OptionParser
 
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
+
+def getOptions:
+	parser = OptionParser()
+	parser.add_option("-f", "--file", dest="filename", help="write report to FILE", metavar="FILE")
+	parser.add_option("-q", "--quiet", action="store_false", dest="verbose", default=True, help="don't print status messages to stdout")
+
+(options, args) = parser.parse_args()
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
@@ -16,8 +24,6 @@ class EventHandler(PatternMatchingEventHandler):
 		print "Handle changes"
 
 		commands = sys.argv[1:]
-		
-		print "Have CMDS: {0}".format(commands)
 		for cmd in commands:
 			print "Executing \"{0}\" ...".format(cmd)
 			returnCode = subprocess.call(cmd, shell=True)
@@ -26,7 +32,6 @@ class EventHandler(PatternMatchingEventHandler):
 
 		
 	def process(self, event):
-		print event
 		"""
 		event.event_type
 			'modified' | 'created' | 'moved' | 'deleted'
