@@ -9,7 +9,7 @@ import daemon
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-PIDFILE = '/var/run/filewatcher.pid' 
+
 LOGFILE = '/var/log/filewatcher.log'
 
 class EventHandler(PatternMatchingEventHandler):
@@ -45,7 +45,7 @@ class EventHandler(PatternMatchingEventHandler):
 
 if __name__ == '__main__':
 	args = sys.argv[1:]
-	logfile = "/var/log/filewatcher.log"
+	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
 	eventHandler.logfile = open(logfile, 'a')
 
