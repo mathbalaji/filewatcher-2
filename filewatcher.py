@@ -9,9 +9,6 @@ import daemon
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-
-LOGFILE = '/var/log/filewatcher.log'
-
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
 
@@ -47,13 +44,16 @@ if __name__ == '__main__':
 	args = sys.argv[1:]
 	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
-	eventHandler.logfile = open(logfile, 'a')
+	
 
 	observer = Observer()
 	observer.schedule(eventHandler, path=args[0] if args else '.')
 	observer.start()
 
-	eventHandler.logfile.write("filewatcher.py is watching on: {0}".format(repr(os.getcwd())))
+	eventHandler.logfile = open(logfile, 'w')
+	eventHandler.logfile.write("filewatcher.py is watching on: {0}\n".format(repr(os.getcwd())))
+	eventHandler.logfile = close()
+	
 	try:
 		while True:
 			time.sleep(1)
