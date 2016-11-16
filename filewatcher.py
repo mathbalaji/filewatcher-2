@@ -4,7 +4,7 @@ import time
 import sys
 import os
 import subprocess
-import daemon
+from daemon import Daemon 
 
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
