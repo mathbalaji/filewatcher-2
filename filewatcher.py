@@ -46,6 +46,7 @@ if __name__ == '__main__':
 	eventHandler = EventHandler()
 	eventHandler.commands = args
 
+	print args
 	observer = Observer()
 	observer.schedule(eventHandler, path=args[0] if args else '.')
 	observer.start()
