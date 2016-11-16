@@ -29,11 +29,11 @@ class EventHandler(PatternMatchingEventHandler):
         
     def process(self, event):
         event.event_type
-            'modified' | 'created' | 'moved' | 'deleted'
+        'modified' | 'created' | 'moved' | 'deleted'
         event.is_directory
-            True | False
+        True | False
         event.src_path
-            path/to/file
+        path/to/file
         
         self.do_handleChanges(event)
         
