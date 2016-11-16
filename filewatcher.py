@@ -11,17 +11,14 @@ from watchdog.events import PatternMatchingEventHandler
 
 class EventHandler(PatternMatchingEventHandler):
 	patterns = ["*"]
-	commands = []
+
 	def do_handleChanges(self, event):
 		print "Handle changes"
-		buildCmd = "swift build"
-		runCmd = ".build/debug/App"
+
+		commands = sys.argv[1:]
 		
 		print "Have CMDS: {0}".format(commands)
 		
-		
-		print output, error
-
 	def process(self, event):
 		print event
 		"""
@@ -44,11 +41,9 @@ if __name__ == '__main__':
 	args = sys.argv[1:]
 	logfile = "./filewatcher.log"
 	eventHandler = EventHandler()
-	eventHandler.commands = args
 
-	print args
 	observer = Observer()
-	observer.schedule(eventHandler, path=args[0])
+	observer.schedule(eventHandler, path='.')
 	observer.start()
 	
 	print "filewatcher.py is watching on: {0}".format(repr(os.getcwd()))
