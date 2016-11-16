@@ -12,9 +12,6 @@ from watchdog.events import PatternMatchingEventHandler
 PIDFILE = '/var/run/filewatcher.pid' 
 LOGFILE = '/var/log/filewatcher.log'
 
-with daemon.DaemonContext():
-    do_main_program()
-
 class EventHandler(PatternMatchingEventHandler):
     
     patterns = ["*"]
