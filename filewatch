@@ -51,7 +51,9 @@ if __name__ == '__main__':
 	eventHandler = EventHandler()
 	print args
 	
-	print open("{0}/.fwignore".format(args.w), 'r')
+	with open("{0}/.fwignore".format(args.w), 'r') as file:
+		print file.readlines()
+
 	observer = Observer()
 	observer.schedule(eventHandler, path=args.w, recursive=True)
 	observer.start()
