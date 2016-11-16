@@ -12,9 +12,8 @@ from watchdog.events import PatternMatchingEventHandler
 
 def getOptions():
 	parser = OptionParser()
-	parser.add_option("-f", "--file", dest="filename", help="write report to FILE", metavar="FILE")
-	parser.add_option("-q", "--quiet", action="store_false", dest="verbose", default=True, help="don't print status messages to stdout")
-
+	parser.add_option("-w", "--watchdir", dest="watchdir", help="Watching this directory instead of \'.\'", default='.')
+	parser.add_option("-l", "--log", dest="log", default=stderr, help="Destination for printing logs.")
 	return parser.parse_args()
 
 class EventHandler(PatternMatchingEventHandler):
